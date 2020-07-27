@@ -32,6 +32,7 @@ class PinsController < ApplicationController
   end
 
   def destroy
+    @board = Board.find(board_params)
      @pin.destroy
       redirect_to root_path
   end
@@ -39,7 +40,7 @@ class PinsController < ApplicationController
   private
 
   def pin_params
-    params.require(:pin).permit(:title, :description)
+    params.require(:pin).permit(:title, :description, :image)
   end
 
   def find_pin
